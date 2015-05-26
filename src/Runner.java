@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class Runner {
     private static ArrayList<ElectricDevice> devices = new ArrayList<ElectricDevice>();
     public static void main(String[] args) {
-        devices.add(new ElectricDevice("Teapot", 5));
-        devices.add(new ElectricDevice("Iron", 4));
-        devices.add(new ElectricDevice("TV", 4));
-        devices.add(new ElectricDevice("Refrigerator", 3));
+        devices.add(ElectricDevice.create(ElectricDevice.KICHEN_DEVICE, "Teapot", 800));
+        devices.add(ElectricDevice.create(ElectricDevice.KICHEN_DEVICE, "Microwave", 1500));
+        devices.add(ElectricDevice.create(ElectricDevice.ENTERTAINMENT_DEVICE, "TV", 150));
+        devices.add(ElectricDevice.create(ElectricDevice.KICHEN_DEVICE, "Refrigerator", 300));
         System.out.println(devices.get(1).getName());
     }
 }
