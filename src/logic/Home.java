@@ -4,8 +4,9 @@ import entity.ElectricDevice;
 import java.util.ArrayList;
 
 public class Home {
-    public ArrayList<ElectricDevice> devices = new ArrayList<ElectricDevice>();
+    private ArrayList<ElectricDevice> devices = new ArrayList<ElectricDevice>();
 
+//    calculate power consumption only for plugged devices
     public static int calculatePowerConsumption(ArrayList<ElectricDevice> devices) {
         int power=0;
         for(ElectricDevice device: devices) {
@@ -14,5 +15,13 @@ public class Home {
             }
         }
         return power;
+    }
+
+    public ArrayList<ElectricDevice> getDevices() {
+        return devices;
+    }
+
+    public void setDevices(ArrayList<ElectricDevice> devices) {
+        this.devices = devices;
     }
 }
