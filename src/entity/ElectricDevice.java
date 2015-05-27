@@ -1,7 +1,7 @@
 package entity;
 
-public abstract class ElectricDevice {
-    private  String name;
+public abstract class ElectricDevice implements Comparable {
+    private String name;
     private int power;
     private Boolean pluggedIn;
     public static final int KICHEN_DEVICE =0;
@@ -48,4 +48,20 @@ public abstract class ElectricDevice {
     public void setPluggedIn(Boolean pluggedIn) {
         this.pluggedIn = pluggedIn;
     }
+    @Override
+    public int compareTo(Object obj) {
+        ElectricDevice tmp = (ElectricDevice)obj;
+        if (this.power < tmp.power) {
+            return -1;
+        } else if (this.power > tmp.power) {
+            return 1;
+        }
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return name + ", Power: " + power;
+    }
+
 }
