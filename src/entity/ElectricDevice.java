@@ -1,9 +1,13 @@
 package entity;
 
+/*
+ * Basic class for all Electric Devices
+ */
+
 public abstract class ElectricDevice implements Comparable {
     private String name;
     private int power;
-    private Boolean pluggedIn;
+    private Boolean pluggedIn=false;
     public static final int KICHEN_DEVICE =0;
     public static final int COMPUTER_DEVICE =1;
     public static final int CLEARING_DEVICE =2;
@@ -20,6 +24,7 @@ public abstract class ElectricDevice implements Comparable {
             default: return null;
         }
     }
+
     public ElectricDevice(String name, int power) {
         this.name =  name;
         this.power = power;
@@ -34,7 +39,7 @@ public abstract class ElectricDevice implements Comparable {
     }
 
     public int getPower() {
-        return power;
+        return this.power;
     }
 
     public void setPower(int power) {
@@ -45,9 +50,29 @@ public abstract class ElectricDevice implements Comparable {
         return pluggedIn;
     }
 
-    public void setPluggedIn(Boolean pluggedIn) {
-        this.pluggedIn = pluggedIn;
+    public static void plugInDevice(ElectricDevice device) {
+        device.pluggedIn=true;
     }
+
+    public static void plugInDevice(ElectricDevice... devices) {
+        if (devices.length>0) {
+            for (int i=0; i<devices.length; i++) {
+                devices[i].pluggedIn=true;
+            }
+        }
+    }
+
+    public static void plugOutDevice(ElectricDevice device) {
+        device.pluggedIn=false;
+    }
+    public static void plugOutDevice(ElectricDevice... devices) {
+        if (devices.length>0) {
+            for (int i=0; i<devices.length; i++) {
+                devices[i].pluggedIn=false;
+            }
+        }
+    }
+
     @Override
     public int compareTo(Object obj) {
         ElectricDevice tmp = (ElectricDevice)obj;
@@ -61,7 +86,9 @@ public abstract class ElectricDevice implements Comparable {
 
     @Override
     public String toString() {
-        return name + ", Power: " + power;
+        String result = name + ", Power: " + power;
+        if (this.pluggedIn) {result+=", on";}else {result+=", off";}
+        return result;
     }
 
 }
