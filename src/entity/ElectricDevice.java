@@ -90,5 +90,4 @@ public abstract class ElectricDevice implements Comparable {
         if (this.pluggedIn) {result+=", on";}else {result+=", off";}
         return result;
     }
-
 }
