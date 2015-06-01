@@ -10,17 +10,17 @@ public class ComputerDevice extends ElectricDevice {
         super(name, power);
     }
 
+    public ComputerDevice(String name, int power, double processingPowerHZ) {
+        super(name, power);
+        this.processingPowerHZ = processingPowerHZ;
+    }
+
     public double getProcessingPower() {
         return processingPowerHZ;
     }
 
     public void setProcessingPower(double processingPower) {
         this.processingPowerHZ = processingPower;
-    }
-
-    public ComputerDevice(String name, int power, double processingPowerHZ) {
-        super(name, power);
-        this.processingPowerHZ = processingPowerHZ;
     }
 
     @Override

@@ -21,10 +21,10 @@ public class DeviceFactory {
             devices.add(new ComputerDevice("ComputerDevice"+i,random.nextInt(350)+250, random.nextDouble()));
         }
         for (int i = 0; i < countEntertainmentDevices; i++) {
-            devices.add(new EntertainmentDevice("EntertainmentDevice"+i,random.nextInt(100)+100));
+            devices.add(new EntertainmentDevice("EntertainmentDevice"+i,random.nextInt(100)+100, "1920x1080"));
         }
         for (int i = 0; i < countKichenDevices; i++) {
-            devices.add(new KichenDevice("KichenDevice"+i,random.nextInt(700)+300));
+            devices.add(new KichenDevice("KichenDevice"+i,random.nextInt(700)+300, "heats the food"));
         }
         return devices;
     }

@@ -8,7 +8,7 @@ public class Home {
     private List<ElectricDevice> devices = new ArrayList<ElectricDevice>();
 
 //    calculate power consumption only for plugged devices
-    public static int calculatePowerConsumption(List<ElectricDevice> devices) {
+    public int calculatePowerConsumption() {
         int power=0;
         for(ElectricDevice device: devices) {
             if (device.isPluggedIn()) {
@@ -18,7 +18,7 @@ public class Home {
         return power;
     }
 
-    public static List findDeviceByPowerRange(List<ElectricDevice> devices, int minRange, int maxRange) {
+    public List findDeviceByPowerRange(int minRange, int maxRange) {
         List<ElectricDevice> resDevices = new ArrayList<ElectricDevice>();
         for (ElectricDevice device: devices) {
             if ((device.getPower()>=minRange)&&(device.getPower()<=maxRange)) {
