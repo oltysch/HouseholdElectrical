@@ -8,18 +8,6 @@ public abstract class ElectricDevice implements Comparable {
     private String name;
     private int power;
     private Boolean pluggedIn=false;
-    public static final int KICHEN_DEVICE =0;
-    public static final int COMPUTER_DEVICE =1;
-    public static final int ENTERTAINMENT_DEVICE =2;
-
-    public static ElectricDevice create(int type, String name, int power) {
-        switch (type) {
-            case KICHEN_DEVICE: return new KichenDevice(name, power);
-            case ENTERTAINMENT_DEVICE: return new EntertainmentDevice(name, power);
-            case COMPUTER_DEVICE: return new ComputerDevice(name, power);
-            default: return null;
-        }
-    }
 
     public ElectricDevice(String name, int power) {
         this.name =  name;
@@ -46,27 +34,8 @@ public abstract class ElectricDevice implements Comparable {
         return pluggedIn;
     }
 
-    public static void plugInDevice(ElectricDevice device) {
-        device.pluggedIn=true;
-    }
-
-    public static void plugInDevice(ElectricDevice... devices) {
-        if (devices.length>0) {
-            for (int i=0; i<devices.length; i++) {
-                devices[i].pluggedIn=true;
-            }
-        }
-    }
-
-    public static void plugOutDevice(ElectricDevice device) {
-        device.pluggedIn=false;
-    }
-    public static void plugOutDevice(ElectricDevice... devices) {
-        if (devices.length>0) {
-            for (int i=0; i<devices.length; i++) {
-                devices[i].pluggedIn=false;
-            }
-        }
+    public void setPluggedIn(Boolean pluggedIn) {
+        this.pluggedIn=pluggedIn;
     }
 
     @Override
