@@ -6,13 +6,13 @@ package entity;
 public class KichenDevice extends ElectricDevice {
     private String appointment;
 
-    public KichenDevice(String name, int power, String appointment) {
-        super(name, power);
+    public KichenDevice(String name, int power, int price, String appointment) {
+        super(name, power, price);
         this.appointment = appointment;
     }
 
-    public KichenDevice(String name, int power) {
-        super(name, power);
+    public KichenDevice(String name, int power, int price) {
+        super(name, power, price);
     }
 
     public String getAppointment() {
@@ -26,10 +26,14 @@ public class KichenDevice extends ElectricDevice {
     @Override
     public String toString() {
         String result = getName() + ", Power: " + getPower();
-        if (appointment!=null) {
-            result+=", Appointment: " + appointment;
+        if (appointment != null) {
+            result += ", Appointment: " + appointment;
         }
-        if (isPluggedIn()) {result+=", on";}else {result+=", off";}
+        if (isPluggedIn()) {
+            result += ", on";
+        } else {
+            result += ", off";
+        }
         return result;
     }
 }

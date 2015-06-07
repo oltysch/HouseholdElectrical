@@ -6,12 +6,12 @@ package entity;
 public class ComputerDevice extends ElectricDevice {
     private double processingPowerHZ;
 
-    public ComputerDevice(String name, int power) {
-        super(name, power);
+    public ComputerDevice(String name, int power, int price) {
+        super(name, power, price);
     }
 
-    public ComputerDevice(String name, int power, double processingPowerHZ) {
-        super(name, power);
+    public ComputerDevice(String name, int power, int price, double processingPowerHZ) {
+        super(name, power, price);
         this.processingPowerHZ = processingPowerHZ;
     }
 
@@ -26,10 +26,14 @@ public class ComputerDevice extends ElectricDevice {
     @Override
     public String toString() {
         String result = getName() + ", Power: " + getPower();
-        if (processingPowerHZ!=0.0D) {
-            result+=", CPU: " + processingPowerHZ + " GHz";
+        if (processingPowerHZ != 0.0D) {
+            result += ", CPU: " + processingPowerHZ + " GHz";
         }
-        if (isPluggedIn()) {result+=", on";}else {result+=", off";}
+        if (isPluggedIn()) {
+            result += ", on";
+        } else {
+            result += ", off";
+        }
         return result;
     }
 }

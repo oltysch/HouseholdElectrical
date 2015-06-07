@@ -6,12 +6,12 @@ package entity;
 public class EntertainmentDevice extends ElectricDevice {
     private String screenResolution;
 
-    public EntertainmentDevice(String name, int power) {
-        super(name, power);
+    public EntertainmentDevice(String name, int power, int price) {
+        super(name, power, price);
     }
 
-    public EntertainmentDevice(String name, int power, String resolution) {
-        super(name, power);
+    public EntertainmentDevice(String name, int power, int price, String resolution) {
+        super(name, power, price);
         this.screenResolution = resolution;
     }
 
@@ -26,10 +26,14 @@ public class EntertainmentDevice extends ElectricDevice {
     @Override
     public String toString() {
         String result = getName() + ", Power: " + getPower();
-        if (screenResolution !=null) {
-            result+=", Resolution: " + screenResolution;
+        if (screenResolution != null) {
+            result += ", Resolution: " + screenResolution;
         }
-        if (this.isPluggedIn()) {result+=", on";}else {result+=", off";}
+        if (this.isPluggedIn()) {
+            result += ", on";
+        } else {
+            result += ", off";
+        }
         return result;
     }
 }
