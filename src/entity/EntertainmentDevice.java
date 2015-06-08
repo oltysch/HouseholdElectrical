@@ -25,7 +25,7 @@ public class EntertainmentDevice extends ElectricDevice {
 
     @Override
     public String toString() {
-        String result = getName() + ", Power: " + getPower();
+        String result = getName() + ", Price: " + getPrice() + ", Power: " + getPower();
         if (screenResolution != null) {
             result += ", Resolution: " + screenResolution;
         }

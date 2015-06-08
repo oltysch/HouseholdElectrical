@@ -25,7 +25,7 @@ public class KichenDevice extends ElectricDevice {
 
     @Override
     public String toString() {
-        String result = getName() + ", Power: " + getPower();
+        String result = getName() + ", Price: " + getPrice() + ", Power: " + getPower();
         if (appointment != null) {
             result += ", Appointment: " + appointment;
         }

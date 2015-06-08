@@ -4,43 +4,21 @@ package entity;
  * Basic class for all Electric Devices
  */
 
-import java.util.Comparator;
+import java.util.*;
 
 public abstract class ElectricDevice {
     private String name;
     private int power;
     private int price;
-
-    public static final Comparator<ElectricDevice> COMPARE_BY_POWER = new Comparator<ElectricDevice>() {
-        @Override
-        public int compare(ElectricDevice device1, ElectricDevice device2) {
-            if (device1.power < device2.power) return -1;
-            else if (device1.power > device2.power) return 1;
-            return 0;
-        }
-    };
-    public static final Comparator<ElectricDevice> COMPARE_BY_PRICE = new Comparator<ElectricDevice>() {
-        @Override
-        public int compare(ElectricDevice device1, ElectricDevice device2) {
-            if (device1.price < device2.price) return -1;
-            else if (device1.price > device2.price) return 1;
-            return 0;
-        }
-    };
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
     private Boolean pluggedIn = false;
 
     public ElectricDevice(String name, int power, int price) {
         this.name = name;
         this.power = power;
+        this.price = price;
+    }
+
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -54,6 +32,10 @@ public abstract class ElectricDevice {
 
     public int getPower() {
         return this.power;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     public void setPower(int power) {
@@ -81,7 +63,7 @@ public abstract class ElectricDevice {
 
     @Override
     public String toString() {
-        String result = name + ", Power: " + power;
+        String result = name + ", Price: " + price + ", Power: " + power;
         if (this.pluggedIn) {
             result += ", on";
         } else {
@@ -89,4 +71,47 @@ public abstract class ElectricDevice {
         }
         return result;
     }
+
+    public static final Comparator<ElectricDevice> COMPARE_BY_POWER = new Comparator<ElectricDevice>() {
+        @Override
+        public int compare(ElectricDevice device1, ElectricDevice device2) {
+            if (device1.power < device2.power) return -1;
+            else if (device1.power > device2.power) return 1;
+            return 0;
+        }
+    };
+
+    public static final Comparator<ElectricDevice> COMPARE_BY_PRICE = new Comparator<ElectricDevice>() {
+        @Override
+        public int compare(ElectricDevice device1, ElectricDevice device2) {
+            if (device1.price < device2.price) return -1;
+            else if (device1.price > device2.price) return 1;
+            return 0;
+        }
+    };
+
+    public static final Comparator<ElectricDevice> COMPARE_BY_NAME = new Comparator<ElectricDevice>() {
+        @Override
+        public int compare(ElectricDevice device1, ElectricDevice device2) {
+            int len1 = device1.getName().length();
+            int len2 = device2.getName().length();
+            int lim = Math.min(len1, len2);
+            char v1[] = device1.getName().toCharArray();
+            char v2[] = device2.getName().toCharArray();
+
+            int k = 0;
+            while (k < lim) {
+                char c1 = v1[k];
+                char c2 = v2[k];
+                if (c1 != c2) {
+                    return c1 - c2;
+                }
+                k++;
+            }
+            return len1 - len2;
+            /*if (device1.price < device2.price) return -1;
+            else if (device1.price > device2.price) return 1;
+            return 0;*/
+        }
+    };
 }

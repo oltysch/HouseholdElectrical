@@ -25,7 +25,7 @@ public class ComputerDevice extends ElectricDevice {
 
     @Override
     public String toString() {
-        String result = getName() + ", Power: " + getPower();
+        String result = getName() + ", Price: " + getPrice() + ", Power: " + getPower();
         if (processingPowerHZ != 0.0D) {
             result += ", CPU: " + processingPowerHZ + " GHz";
         }

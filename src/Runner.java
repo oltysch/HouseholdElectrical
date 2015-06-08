@@ -2,10 +2,7 @@ import entity.*;
 import logic.DeviceFactory;
 import logic.Home;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Runner {
     public static void main(String[] args) {
@@ -16,7 +13,8 @@ public class Runner {
         Home home = new Home();
         Scanner scanner = new Scanner(System.in);
         home.setDevices(DeviceFactory.randomizedCreating(9));
-        Collections.sort(home.getDevices(), ElectricDevice.COMPARE_BY_POWER);
+        home.sortByPrice();
+        home.sortByName();
         home.randomPlugInDevice(4);
         System.out.println("Devices:");
         for (ElectricDevice device : home.getDevices()) {
